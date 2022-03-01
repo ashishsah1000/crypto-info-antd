@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Link, Route } from "react-router-dom";
+import { Switch, Link, Route, Routes } from "react-router-dom";
 import { Layout, Typography, Space } from "antd";
 import {
   Navbar,
@@ -20,23 +20,17 @@ export default function App() {
       <div className="main">
         <Layout>
           <div className="routes">
-            <Switch>
-              <Route exact path="/">
-                <Homepage />
-              </Route>
-              <Route exact path="/exchanges">
-                <Exchanges />
-              </Route>
-              <Route exact path="/cryptocurrencies">
-                <Cryptocurrencies />
-              </Route>
-              <Route exact path="/crypto/:coinId">
-                <CryptoDetails />
-              </Route>
-              <Route exact path="/news">
-                <News />
-              </Route>
-            </Switch>
+            <Routes>
+              <Route exact path="/" element={<Homepage />} />
+              <Route exact path="/exchanges" element={<Exchanges />} />
+              <Route
+                exact
+                path="/cryptocurrencies"
+                element={<Cryptocurrencies />}
+              />
+              <Route exact path="/crypto/:coinId" element={<CryptoDetails />} />
+              <Route exact path="/news" element={<News />} />
+            </Routes>
           </div>
         </Layout>
       </div>
