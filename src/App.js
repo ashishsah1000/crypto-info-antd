@@ -1,5 +1,7 @@
 import React from "react";
 import { Switch, Link, Route, Routes } from "react-router-dom";
+import "./App.css";
+
 import { Layout, Typography, Space } from "antd";
 import {
   Navbar,
@@ -9,7 +11,6 @@ import {
   News,
   CryptoDetails
 } from "./components";
-import "./App.css";
 
 export default function App() {
   return (
@@ -25,7 +26,7 @@ export default function App() {
               <Route exact path="/exchanges" element={<Exchanges />} />
               <Route
                 exact
-                path="/cryptocurrencies"
+                path="/cryptocurriences"
                 element={<Cryptocurrencies />}
               />
               <Route exact path="/crypto/:coinId" element={<CryptoDetails />} />
@@ -33,8 +34,21 @@ export default function App() {
             </Routes>
           </div>
         </Layout>
+
+        <div className="footer">
+          <Typography.Title
+            level={5}
+            style={{ color: "white", textAlign: "center" }}
+          >
+            CryptoInfo | Get infotmation about your investment
+          </Typography.Title>
+          <Space>
+            <Link to="/">Home</Link>
+            <Link to="/exchanges">Exchanges</Link>
+            <Link to="/news">news</Link>
+          </Space>
+        </div>
       </div>
-      <div className="footer"></div>
     </div>
   );
 }
