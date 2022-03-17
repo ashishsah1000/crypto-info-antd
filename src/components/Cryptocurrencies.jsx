@@ -10,7 +10,7 @@ const Cryptocurrencies = () => {
   console.log(cryptos);
   return (
     <>
-      <Row className="crypto-card-container" gutters={[32, 32]}>
+      <Row className="crypto-card-container" gutter={[32, 32]}>
         {cryptos.map((currency) => {
           return (
             <Col
@@ -22,6 +22,7 @@ const Cryptocurrencies = () => {
             >
               <Link to={`/crypto/${currency.id}`}>
                 <Card
+                  style={{ width: "250px", margin: "2px 2px 2px 2px" }}
                   className="crypto-image"
                   title={`${currency.rank}. ${currency.name}`}
                   extra={
