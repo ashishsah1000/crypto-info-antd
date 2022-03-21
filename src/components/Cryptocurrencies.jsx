@@ -11,13 +11,32 @@ const Cryptocurrencies = ({ simplified = false }) => {
   //  console.log("count=",count)
   const { data: cryptoList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState(cryptoList?.data?.coins);
+  const [searchTerm, setSearchTerm] = useState("");
   // console.log(cryptos);
   useEffect(() => {
     setCryptos(cryptoList?.data?.coins);
-  });
+    const searchData = cryptos?.filter((coin) => {
+      return coin.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    if (searchTerm != "") setCryptos(searchData);
+    else setCryptos(cryptoList?.data?.coins);
+  }, [searchTerm]);
   if (isFetching) return "data is being fetched";
   return (
     <>
+      {!simplified && (
+        <div className="search-crypto">
+          <Input
+            type="text"
+            className="search"
+            placeholder="Search for coins"
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+        </div>
+      )}
+
       <Row className="crypto-card-container" gutter={[32, 32]}>
         {cryptos?.map((currency) => {
           return (
