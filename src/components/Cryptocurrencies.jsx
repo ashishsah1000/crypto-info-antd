@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import millify from "millify";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 
-const Cryptocurrencies = () => {
-  const { data: cryptoList, isFetching } = useGetCryptosQuery();
+const Cryptocurrencies = ({ simplified = false }) => {
+  // console.log("Simplified=", simplified);
+  // if (simplified !== true) simplified = false;
+  const count = simplified ? 10 : 100;
+  //  console.log("count=",count)
+  const { data: cryptoList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState(cryptoList?.data?.coins);
-  console.log(cryptos);
+  // console.log(cryptos);
+  useEffect(() => {
+    setCryptos(cryptoList?.data?.coins);
+  });
+  if (isFetching) return "data is being fetched";
   return (
     <>
       <Row className="crypto-card-container" gutter={[32, 32]}>
-        {cryptos.map((currency) => {
+        {cryptos?.map((currency) => {
           return (
             <Col
               xs={24}

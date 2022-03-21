@@ -8,7 +8,7 @@ import { useGetCryptosQuery } from "../services/cryptoApi";
 
 const { Title } = Typography;
 const Homepage = () => {
-  const { data, isFetching } = useGetCryptosQuery();
+  const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
   console.log(data);
   if (isFetching) return "Loading... ";
@@ -54,10 +54,10 @@ const Homepage = () => {
           Top 10 Cryptocurrencies in the world
         </Title>
         <Title className="show-more" level={3}>
-          <Link to="/cryptocurrencies">Show More</Link>
+          <Link to="/cryptocurriences">Show More</Link>
         </Title>
       </div>
-      <Cryptocurrencies simplified />
+      <Cryptocurrencies simplified={true} />
       <div className="home-heading-container">
         <Title className="home-title" level={2}>
           Latest Cryptocurrencies news
