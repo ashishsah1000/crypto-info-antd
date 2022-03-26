@@ -5,7 +5,7 @@ import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 const { Text, Title } = Typography;
 const { Option } = Select;
 
-const News = ({ simplified = true }) => {
+const News = ({ simplified = false }) => {
   const demoImage = "https://picsum.photos/200/300";
   const { data: cryptoNews } = useGetCryptoNewsQuery({
     newsCategory: "cryptocurrency",
@@ -27,6 +27,7 @@ const News = ({ simplified = true }) => {
                     {news.name}
                   </Title>
                   <img
+                    style={{ maxWidth: "200px", maxHeight: "100px" }}
                     src={news?.image?.thumbnail?.contentUrl || demoImage}
                     alt="news"
                   ></img>
@@ -45,6 +46,9 @@ const News = ({ simplified = true }) => {
                         demoImage
                       }
                     />
+                    <Text className="provider-name">
+                      {news.provider[0]?.name}
+                    </Text>
                     <Text>
                       {/* {momentjs(news.datePublished).startOf("ss").fromNow()} */}
                     </Text>

@@ -33,7 +33,7 @@ const Navbar = () => {
             <Link to="/exchanges">Exchanges</Link>
           </Menu.Item>
           <Menu.Item icon={<BulbOutlined />}>
-            <Link to="/news">Home</Link>
+            <Link to="/news">News</Link>
           </Menu.Item>
         </Menu>
       </div>

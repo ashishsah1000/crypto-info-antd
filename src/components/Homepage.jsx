@@ -63,10 +63,10 @@ const Homepage = () => {
           Latest Cryptocurrencies news
         </Title>
         <Title className="show-more" level={3}>
-          <Link to="/cryptocurrencies">Show More</Link>
+          <Link to="/news">Show More</Link>
         </Title>
       </div>
-      <News simplified />
+      <News simplified="true" />
     </>
   );
 };
