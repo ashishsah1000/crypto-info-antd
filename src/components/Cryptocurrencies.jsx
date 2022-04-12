@@ -3,6 +3,7 @@ import millify from "millify";
 import { Link } from "react-router-dom";
 import { Card, Row, Col, Input } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+import { Loading } from "./index";
 
 const Cryptocurrencies = ({ simplified = false }) => {
   // console.log("Simplified=", simplified);
@@ -21,7 +22,7 @@ const Cryptocurrencies = ({ simplified = false }) => {
     if (searchTerm != "") setCryptos(searchData);
     else setCryptos(cryptoList?.data?.coins);
   }, [searchTerm]);
-  if (isFetching) return "data is being fetched";
+  if (isFetching) return <Loading count={10} />;
   return (
     <>
       {!simplified && (
@@ -47,7 +48,7 @@ const Cryptocurrencies = ({ simplified = false }) => {
               className="crypto-card"
               key={currency.id}
             >
-              <Link to={`/crypto/${currency.id}`}>
+              <Link key={currency.uuid} to={`/crypto/${currency.uuid}`}>
                 <Card
                   style={{ width: "250px", margin: "2px 2px 2px 2px" }}
                   className="crypto-image"

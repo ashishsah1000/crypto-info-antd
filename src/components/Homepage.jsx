@@ -3,6 +3,7 @@ import millify from "millify";
 import { Typography, Row, Col, Statistic } from "antd";
 import { Link } from "react-router-dom";
 import { Cryptocurrencies, News } from "./index";
+import { Loading } from "./index";
 
 import { useGetCryptosQuery } from "../services/cryptoApi";
 
@@ -11,7 +12,7 @@ const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
   console.log(data);
-  if (isFetching) return "Loading... ";
+  if (isFetching) return <Loading count={10} />;
   return (
     <>
       <Title level={2} className="heading">
