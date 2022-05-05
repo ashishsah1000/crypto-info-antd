@@ -37,7 +37,7 @@ const CryptoDetails = () => {
     coinId,
     timePeriod
   });
-  console.log(data);
+  console.log(coinHistory);
   useEffect(() => {
     setCrytoDetails(data?.data?.coin);
     console.log("from crypto detaisl", cryptoDetails);
@@ -148,9 +148,7 @@ const CryptoDetails = () => {
             onChange={(value) => setTimePeriod(value)}
           >
             {time.map((date) => (
-              <Option key={date} value={date}>
-                {date}{" "}
-              </Option>
+              <Option key={date}>{date} </Option>
             ))}
           </Select>
           <LineChart
